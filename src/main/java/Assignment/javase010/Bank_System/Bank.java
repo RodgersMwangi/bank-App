@@ -7,7 +7,7 @@ Features implemented
     Encapsulation
     Inheritance
     Polymorphism
-    Error Handling
+    
 
 */
 
