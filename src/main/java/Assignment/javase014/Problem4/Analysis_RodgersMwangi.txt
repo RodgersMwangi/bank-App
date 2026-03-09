@@ -1,0 +1,46 @@
+Issue Number 1
+    In the method setSalary, the line salary=salary is not inside an else statement. This means that
+    this code will execute no matter the result of the if statement. So even if the salary is less than 
+    0, it will still be assigned to salary.
+    To correct this, enclose salry=salary in an else statement.
+    In addition, use this keyword to specify that the salary class field is the one we are assigning the
+    parameter salary to. Otherwise, the compiler will not know which salary is being referred to.
+    if (salary < 0) {
+            System.out.println("Salary cannot be negative");
+        }else{
+            this.salary = salary;
+        }
+
+Issue 2:
+    The field salary has not being initialized in the constructor. To add a salary, the method setSalary
+    will need to be called separately each time. For cleaner code, setSalary should be called inside the 
+    constructor.
+    public EmployeeManagement(String name) {
+        employeeName = name;
+        setSalary(salary);
+
+        }
+Issue 3:
+    employeeName field is not being validated. A user could pass an empty name and it would be accepted.
+    A setEmployeeName setter method should be used for validation and then called inside the costructor.
+    public void setEmployeeName(String employeeName) {
+        if(!employeeName.trim().isEmpty()){
+            this.employeeName = employeeName;
+        }else{
+            System.out.println("Invalid Name");
+            //throw error
+        }
+        
+    }
+    public EmployeeManagement(String name) {
+        setEmployeeName(name);
+        setSalary(salary);
+
+    }
+
+Issue 4: 
+    The method calculateBonus is returning a double value while the method itself is void. A void method
+    does not return any value. To fix this, change from void to double.
+    public double calculateBonus() {
+        return salary * 0.1;
+    }
